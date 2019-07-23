@@ -1,0 +1,9 @@
+---
+- hosts: servers
+  remote_user: root
+  tasks:
+    - shell: echo 1
+      register: result
+      until: result.stdout.find("0") != -1
+      retries: 50
+      delay: 0
